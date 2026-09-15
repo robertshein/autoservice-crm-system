@@ -1,0 +1,4 @@
+2026-05-19 09:47:28 [TEST] Тестовая ошибка из test_logger.php in C:\OSPanel\domains\localhost\Kursach_Shein-main\test_logger.php:12 (user_id=1)
+2026-05-19 09:48:39 [EXCEPTION] Проверка перехвата исключений in C:\OSPanel\domains\localhost\Kursach_Shein-main\index.php:57 (user_id=1)
+2026-05-19 10:19:51 [PART_CREATE] Column count doesn't match value count at row 1 in C:\OSPanel\domains\localhost\Kursach_Shein-main\contexts\AppContext.php:46 (user_id=1)
+2026-05-19 10:21:46 [WARNING] Неудачная попытка входа для email mechanic3@service.local

@@ -1,0 +1,68 @@
+<?php
+$nav_active = $nav_active ?? '';
+$nav_show_cabinet = true;
+$nav_show_master = $nav_show_master ?? false;
+$nav_show_mechanic = $nav_show_mechanic ?? false;
+$nav_show_admin = $nav_show_admin ?? false;
+$nav_master_section = $nav_master_section ?? '';
+$nav_master_index_href = $nav_master_index_href ?? 'pages/master/index.php';
+$nav_master_new_href = $nav_master_new_href ?? 'pages/master/new_orders.php';
+$nav_master_orders_href = $nav_master_orders_href ?? 'pages/master/orders.php';
+$nav_master_purchases_href = $nav_master_purchases_href ?? 'pages/master/purchase_requests.php';
+$nav_mechanic_section = $nav_mechanic_section ?? '';
+$nav_mechanic_index_href     = $nav_mechanic_index_href     ?? 'pages/mechanic/index.php';
+$nav_mechanic_orders_href    = $nav_mechanic_orders_href    ?? 'pages/mechanic/orders.php';
+$nav_mechanic_archive_href   = $nav_mechanic_archive_href   ?? 'pages/mechanic/archive.php';
+$nav_mechanic_purchases_href = $nav_mechanic_purchases_href ?? 'pages/mechanic/purchase_requests.php';
+$nav_admin_section = $nav_admin_section ?? '';
+$nav_admin_index_href     = $nav_admin_index_href     ?? 'pages/admin/index.php';
+$nav_admin_orders_href    = $nav_admin_orders_href    ?? 'pages/admin/orders.php';
+$nav_admin_employees_href = $nav_admin_employees_href ?? 'pages/admin/employees.php';
+$nav_admin_purchases_href = $nav_admin_purchases_href ?? 'pages/admin/purchase_requests.php';
+$nav_admin_services_href  = $nav_admin_services_href  ?? 'pages/admin/services.php';
+$nav_admin_parts_href     = $nav_admin_parts_href     ?? 'pages/admin/parts.php';
+$nav_is_guest = $nav_is_guest ?? false;
+$nav_login_href = $nav_login_href ?? 'pages/authorization.php';
+$nav_register_href = $nav_register_href ?? 'pages/registration.php';
+$user_label = htmlspecialchars($_SESSION['user']['full_name'] ?? ($_SESSION['user']['email'] ?? ''));
+?>
+<nav class="site-nav sans" aria-label="Основное меню">
+    <div class="site-nav-inner">
+        <div class="site-nav-brand"><a href="<?php echo htmlspecialchars($nav_home_href); ?>">АвтоПлюс</a></div>
+        <?php if ($nav_is_guest): ?>
+            <div class="site-nav-links">
+                <a href="<?php echo htmlspecialchars($nav_login_href); ?>" class="<?php echo $nav_active === 'login' ? 'nav-active' : ''; ?>">Вход</a>
+                <a href="<?php echo htmlspecialchars($nav_register_href); ?>" class="<?php echo $nav_active === 'register' ? 'nav-active' : ''; ?>">Регистрация</a>
+            </div>
+        <?php else: ?>
+            <div class="site-nav-links">
+                <a href="<?php echo htmlspecialchars($nav_home_href); ?>" class="<?php echo $nav_active === 'home' ? 'nav-active' : ''; ?>">Главная</a>
+                <?php if ($nav_show_admin): ?>
+                    <a href="<?php echo htmlspecialchars($nav_admin_index_href); ?>" class="<?php echo $nav_admin_section === 'dashboard' ? 'nav-active' : ''; ?>">Панель</a>
+                    <a href="<?php echo htmlspecialchars($nav_admin_orders_href); ?>" class="<?php echo $nav_admin_section === 'orders' ? 'nav-active' : ''; ?>">Заявки</a>
+                    <a href="<?php echo htmlspecialchars($nav_admin_employees_href); ?>" class="<?php echo $nav_admin_section === 'employees' ? 'nav-active' : ''; ?>">Сотрудники</a>
+                    <a href="<?php echo htmlspecialchars($nav_admin_purchases_href); ?>" class="<?php echo $nav_admin_section === 'purchases' ? 'nav-active' : ''; ?>">Закупки</a>
+                    <a href="<?php echo htmlspecialchars($nav_admin_services_href); ?>" class="<?php echo $nav_admin_section === 'services' ? 'nav-active' : ''; ?>">Услуги</a>
+                    <a href="<?php echo htmlspecialchars($nav_admin_parts_href); ?>" class="<?php echo $nav_admin_section === 'parts' ? 'nav-active' : ''; ?>">Запчасти</a>
+                <?php endif; ?>
+                <?php if ($nav_show_master): ?>
+                    <a href="<?php echo htmlspecialchars($nav_master_index_href); ?>" class="<?php echo $nav_master_section === 'dashboard' ? 'nav-active' : ''; ?>">Панель мастера</a>
+                    <a href="<?php echo htmlspecialchars($nav_master_new_href); ?>" class="<?php echo $nav_master_section === 'new' ? 'nav-active' : ''; ?>">Новые заявки</a>
+                    <a href="<?php echo htmlspecialchars($nav_master_orders_href); ?>" class="<?php echo $nav_master_section === 'orders' ? 'nav-active' : ''; ?>">Все заявки</a>
+                    <a href="<?php echo htmlspecialchars($nav_master_purchases_href); ?>" class="<?php echo $nav_master_section === 'purchases' ? 'nav-active' : ''; ?>">Закупки</a>
+                <?php endif; ?>
+                <?php if ($nav_show_mechanic): ?>
+                    <a href="<?php echo htmlspecialchars($nav_mechanic_index_href); ?>" class="<?php echo $nav_mechanic_section === 'dashboard' ? 'nav-active' : ''; ?>">Панель механика</a>
+                    <a href="<?php echo htmlspecialchars($nav_mechanic_orders_href); ?>" class="<?php echo $nav_mechanic_section === 'orders' ? 'nav-active' : ''; ?>">Мои заявки</a>
+                    <a href="<?php echo htmlspecialchars($nav_mechanic_archive_href); ?>" class="<?php echo $nav_mechanic_section === 'archive' ? 'nav-active' : ''; ?>">Архив</a>
+                    <a href="<?php echo htmlspecialchars($nav_mechanic_purchases_href); ?>" class="<?php echo $nav_mechanic_section === 'purchases' ? 'nav-active' : ''; ?>">Закупки</a>
+                <?php endif; ?>
+                <?php if ($nav_show_cabinet): ?>
+                    <a href="<?php echo htmlspecialchars($nav_cabinet_href); ?>" class="<?php echo $nav_active === 'cabinet' ? 'nav-active' : ''; ?>">Личный кабинет</a>
+                <?php endif; ?>
+                <a href="<?php echo htmlspecialchars($nav_logout_href); ?>">Выйти</a>
+            </div>
+            <span class="site-nav-user sans" title="<?php echo htmlspecialchars($_SESSION['user']['email'] ?? ''); ?>"><?php echo $user_label; ?></span>
+        <?php endif; ?>
+    </div>
+</nav>
